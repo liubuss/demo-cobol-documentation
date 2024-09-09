@@ -1,0 +1,16 @@
+site_name: Index
+
+nav:
+  - Home: index.md
+
+docs_dir: docs
+
+theme:
+  name: mkdocs
+
+markdown_extensions:
+  - tables
+  - admonition
+  - toc:
+      permalink: true  # Optional: Adds permalinks next to headings
+      toc_depth: 3      # Sets depth to include third-level headers (###)
