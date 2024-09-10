@@ -16,4 +16,7 @@ Welcome to the project documentation. Below are the available documents for this
 - [TRDPB003 Documentation](TRDPB003.md)  
   This document provides detailed information about the `TRDPB003` process.
 
+- [MSTPB002 Documentation](MSTPB002.md)  
+  This document provides detailed information about the `MSTPB002` process.
+
 Please select the appropriate document to explore more details about each system.
