@@ -4,6 +4,8 @@
 
 The COBOL program MSTPB002 is designed to retrieve security data. It performs operations to fetch and process security-related information from a database.
 
+- [Indicative Test Cases ](MSTPB002_test_cases.md)  
+
 ## Data Structures
 
 ### Input Data Formats:
