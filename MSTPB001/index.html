@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>MSTPB001 COBOL Program Documentation - Index</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Index</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#mstpb001-cobol-program-documentation" class="nav-link">MSTPB001 COBOL Program Documentation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-high-level-overview" class="nav-link">1. High-Level Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-data-structures" class="nav-link">2. Data Structures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-functional-decomposition" class="nav-link">3. Functional Decomposition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-detailed-logic" class="nav-link">4. Detailed Logic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#5-error-handling" class="nav-link">5. Error Handling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#6-example-usage" class="nav-link">6. Example Usage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="mstpb001-cobol-program-documentation">MSTPB001 COBOL Program Documentation<a class="headerlink" href="#mstpb001-cobol-program-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="1-high-level-overview">1. High-Level Overview<a class="headerlink" href="#1-high-level-overview" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose and Functionality:</strong>
+The MSTPB001 COBOL program is designed to retrieve customer data from a database. It processes the main logic and then specifically fetches customer details based on a given customer ID.</p>
+<p><strong>Key Inputs, Processes, and Outputs:</strong>
+- <strong>Inputs:</strong>
+  - Customer ID
+- <strong>Processes:</strong>
+  - Main logic processing
+  - Fetching customer details from the database
+- <strong>Outputs:</strong>
+  - Customer details including currency, description, and status
+  - Error messages if the customer is not found or inactive</p>
+<h2 id="2-data-structures">2. Data Structures<a class="headerlink" href="#2-data-structures" title="Permanent link">&para;</a></h2>
+<h3 id="input-data-formats">Input Data Formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Input</td>
+<td>User/Input</td>
+<td><strong>LS-CUSTOMER-ID</strong>: PIC X(10) - The ID of the customer to fetch.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-data-formats">Output Data Formats<a class="headerlink" href="#output-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer Output</td>
+<td>Program Output</td>
+<td><strong>LS-CUSTOMER-CURRENCY</strong>: PIC X(3) - The currency code of the customer.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>LS-CUSTOMER-DESCRIPTION</strong>: PIC X(50) - The description of the customer.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>LS-CUSTOMER-STATUS</strong>: PIC X(1) - The status of the customer (A for active, I for inactive).</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><strong>LS-CUSTOMER-ERROR-MSG</strong>: PIC X(100) - Error message if the customer is not found or inactive.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-functional-decomposition">3. Functional Decomposition<a class="headerlink" href="#3-functional-decomposition" title="Permanent link">&para;</a></h2>
+<h3 id="main-functions">Main Functions<a class="headerlink" href="#main-functions" title="Permanent link">&para;</a></h3>
+<h4 id="0000-mainline">0000-MAINLINE<a class="headerlink" href="#0000-mainline" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> None</li>
+<li><strong>Outputs:</strong> Sets <code>88-CUSTOMER-EXCEPTION</code>, initializes <code>LS-CUSTOMER-ERROR-MSG</code>, calls <code>1000-GET-CUSTOMER</code></li>
+<li><strong>Description:</strong></li>
+<li>Sets the exception flag to true.</li>
+<li>Initializes the error message to spaces.</li>
+<li>Calls the <code>1000-GET-CUSTOMER</code> function.</li>
+<li>Returns control to the caller.</li>
+</ul>
+<h4 id="1000-get-customer">1000-GET-CUSTOMER<a class="headerlink" href="#1000-get-customer" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>SQL-INIT-DONE</code>, <code>SQL-INIT-FLAG</code>, <code>CUS-STATUS</code>, <code>LS-CUSTOMER-ID</code></li>
+<li><strong>Outputs:</strong> <code>LS-CUSTOMER-CURRENCY</code>, <code>LS-CUSTOMER-DESCRIPTION</code>, <code>LS-CUSTOMER-STATUS</code>, <code>LS-CUSTOMER-ERROR-MSG</code></li>
+<li><strong>Description:</strong></li>
+<li>Checks if SQL is initialized.</li>
+<li>Fetches customer details from the database.</li>
+<li>Sets the output fields based on the fetched data.</li>
+<li>Handles exceptions and sets error messages if needed.</li>
+</ul>
+<h2 id="4-detailed-logic">4. Detailed Logic<a class="headerlink" href="#4-detailed-logic" title="Permanent link">&para;</a></h2>
+<h3 id="0000-mainline_1">0000-MAINLINE<a class="headerlink" href="#0000-mainline_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Initialize Exception Flag:</strong></li>
+<li><code>SET 88-CUSTOMER-EXCEPTION TO TRUE</code></li>
+<li><strong>Initialize Error Message:</strong></li>
+<li><code>MOVE SPACES TO LS-CUSTOMER-ERROR-MSG</code></li>
+<li><strong>Call Get Customer Function:</strong></li>
+<li><code>PERFORM 1000-GET-CUSTOMER</code></li>
+<li><strong>Return Control:</strong></li>
+<li><code>GOBACK</code></li>
+</ol>
+<h3 id="1000-get-customer_1">1000-GET-CUSTOMER<a class="headerlink" href="#1000-get-customer_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check SQL Initialization:</strong></li>
+<li><code>IF SQL-INIT-DONE NOT = 'Y'</code><ul>
+<li><code>MOVE 'SQL NOT INITIALIZED' TO LS-CUSTOMER-ERROR-MSG</code></li>
+<li><code>EXIT</code></li>
+</ul>
+</li>
+<li><strong>Fetch Customer Details:</strong></li>
+<li><code>EXEC SQL</code><ul>
+<li><code>SELECT CURRENCY, DESCRIPTION, STATUS</code></li>
+<li><code>INTO :LS-CUSTOMER-CURRENCY, :LS-CUSTOMER-DESCRIPTION, :LS-CUSTOMER-STATUS</code></li>
+<li><code>FROM CUSTOMERS</code></li>
+<li><code>WHERE CUSTOMER_ID = :LS-CUSTOMER-ID</code></li>
+</ul>
+</li>
+<li><code>END-EXEC</code></li>
+<li><strong>Handle SQL Errors:</strong></li>
+<li><code>IF SQLCODE NOT = 0</code><ul>
+<li><code>MOVE 'CUSTOMER NOT FOUND' TO LS-CUSTOMER-ERROR-MSG</code></li>
+<li><code>EXIT</code></li>
+</ul>
+</li>
+<li><strong>Check Customer Status:</strong></li>
+<li><code>IF LS-CUSTOMER-STATUS = 'I'</code><ul>
+<li><code>MOVE 'CUSTOMER INACTIVE' TO LS-CUSTOMER-ERROR-MSG</code></li>
+<li><code>EXIT</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="5-error-handling">5. Error Handling<a class="headerlink" href="#5-error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="common-errors-and-messages">Common Errors and Messages<a class="headerlink" href="#common-errors-and-messages" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Error Condition</th>
+<th>Error Message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQL Not Initialized</td>
+<td>SQL NOT INITIALIZED</td>
+</tr>
+<tr>
+<td>Customer Not Found</td>
+<td>CUSTOMER NOT FOUND</td>
+</tr>
+<tr>
+<td>Customer Inactive</td>
+<td>CUSTOMER INACTIVE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-example-usage">6. Example Usage<a class="headerlink" href="#6-example-usage" title="Permanent link">&para;</a></h2>
+<h3 id="input-example">Input Example<a class="headerlink" href="#input-example" title="Permanent link">&para;</a></h3>
+<pre><code class="language-plaintext">LS-CUSTOMER-ID: '1234567890'
+</code></pre>
+<h3 id="output-example">Output Example<a class="headerlink" href="#output-example" title="Permanent link">&para;</a></h3>
+<pre><code class="language-plaintext">LS-CUSTOMER-CURRENCY: 'USD'
+LS-CUSTOMER-DESCRIPTION: 'John Doe'
+LS-CUSTOMER-STATUS: 'A'
+LS-CUSTOMER-ERROR-MSG: ''
+</code></pre>
+<h3 id="error-example">Error Example<a class="headerlink" href="#error-example" title="Permanent link">&para;</a></h3>
+<pre><code class="language-plaintext">LS-CUSTOMER-ID: '0000000000'
+LS-CUSTOMER-ERROR-MSG: 'CUSTOMER NOT FOUND'
+</code></pre>
+<hr />
+<p>This documentation provides a comprehensive overview of the MSTPB001 COBOL program, detailing its purpose, data structures, functional decomposition, detailed logic, error handling, and example usage. This should enable a developer with no prior COBOL experience to re-implement its functionality in a modern programming language.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

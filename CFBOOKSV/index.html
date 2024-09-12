@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Documentation for COBOL Program CFBOOKSV - Index</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Index</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#documentation-for-cobol-program-cfbooksv" class="nav-link">Documentation for COBOL Program CFBOOKSV</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-high-level-overview" class="nav-link">1. High-Level Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-data-structures" class="nav-link">2. Data Structures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-functional-decomposition" class="nav-link">3. Functional Decomposition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-program-logic" class="nav-link">4. Program Logic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="documentation-for-cobol-program-cfbooksv">Documentation for COBOL Program <code>CFBOOKSV</code><a class="headerlink" href="#documentation-for-cobol-program-cfbooksv" title="Permanent link">&para;</a></h1>
+<h2 id="1-high-level-overview">1. High-Level Overview<a class="headerlink" href="#1-high-level-overview" title="Permanent link">&para;</a></h2>
+<h3 id="purpose-and-functionality">Purpose and Functionality<a class="headerlink" href="#purpose-and-functionality" title="Permanent link">&para;</a></h3>
+<p>The COBOL program <code>CFBOOKSV</code> reads records from a VSAM file containing book information and generates a report. The report is written to an output file named <code>REP-OP</code>.</p>
+<h3 id="key-inputs-processes-and-outputs">Key Inputs, Processes, and Outputs<a class="headerlink" href="#key-inputs-processes-and-outputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Inputs:</strong></li>
+<li>VSAM file <code>VSAMBOOK</code> containing book records.</li>
+<li><strong>Processes:</strong></li>
+<li>Initialize variables and open the output file.</li>
+<li>Read all book records from the VSAM file.</li>
+<li>Write each book record to the output file.</li>
+<li>Perform housekeeping tasks and close files.</li>
+<li><strong>Outputs:</strong></li>
+<li>Report file <code>REP-OP</code> containing the processed book records.</li>
+</ul>
+<h2 id="2-data-structures">2. Data Structures<a class="headerlink" href="#2-data-structures" title="Permanent link">&para;</a></h2>
+<h3 id="input-data-formats">Input Data Formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Book Record</td>
+<td>VSAMBOOK</td>
+<td><code>BOOKS-BOOK-ID</code>, <code>BOOKS-TITLE-TEXT</code>, <code>BOOKS-ISBN-TEXT</code>, <code>BOOKS-TOTAL-PAGES</code>, <code>BOOKS-PUBLISHER-ID</code>, <code>BOOKS-PUBLISHED-DATE</code>, <code>BOOKS-RATING</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fields-description">Fields Description<a class="headerlink" href="#fields-description" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>BOOKS-BOOK-ID:</strong> Numeric identifier for the book.</li>
+<li><strong>BOOKS-TITLE-TEXT:</strong> Title of the book.</li>
+<li><strong>BOOKS-ISBN-TEXT:</strong> ISBN number of the book.</li>
+<li><strong>BOOKS-TOTAL-PAGES:</strong> Total number of pages in the book.</li>
+<li><strong>BOOKS-PUBLISHER-ID:</strong> Identifier for the publisher.</li>
+<li><strong>BOOKS-PUBLISHED-DATE:</strong> Date when the book was published.</li>
+<li><strong>BOOKS-RATING:</strong> Rating of the book.</li>
+</ul>
+<h3 id="output-data-formats">Output Data Formats<a class="headerlink" href="#output-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Report Record</td>
+<td>REP-OP</td>
+<td><code>WS-HEADER-TITLE</code>, <code>WS-HEADER-TIME</code>, <code>WS-SPACE</code>, <code>WS-HEADER-LABEL</code>, <code>WS-HEADER-LINE</code>, <code>WS-FOOTER</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="fields-description_1">Fields Description<a class="headerlink" href="#fields-description_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>WS-HEADER-TITLE:</strong> Header title for the report.</li>
+<li><strong>WS-HEADER-TIME:</strong> Timestamp for the report.</li>
+<li><strong>WS-SPACE:</strong> Space filler.</li>
+<li><strong>WS-HEADER-LABEL:</strong> Label for the header.</li>
+<li><strong>WS-HEADER-LINE:</strong> Line for the header.</li>
+<li><strong>WS-FOOTER:</strong> Footer for the report.</li>
+</ul>
+<h2 id="3-functional-decomposition">3. Functional Decomposition<a class="headerlink" href="#3-functional-decomposition" title="Permanent link">&para;</a></h2>
+<h3 id="functions-and-modules">Functions and Modules<a class="headerlink" href="#functions-and-modules" title="Permanent link">&para;</a></h3>
+<h4 id="0000-main">0000-MAIN<a class="headerlink" href="#0000-main" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> None</li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Main entry point of the program. Initializes variables, opens files, reads records, writes records, and performs housekeeping.</li>
+</ul>
+<h4 id="1000-initialize">1000-INITIALIZE<a class="headerlink" href="#1000-initialize" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> None</li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Initializes variables and opens the output file <code>REP-OP</code>.</li>
+</ul>
+<h4 id="1100-write-header">1100-WRITE-HEADER<a class="headerlink" href="#1100-write-header" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>REP-OP-FIELDS</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Writes the header information to the output file.</li>
+</ul>
+<h4 id="1200-read-book">1200-READ-BOOK<a class="headerlink" href="#1200-read-book" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> None</li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Reads the next book record from the VSAM file <code>VSAMBOOK</code>.</li>
+</ul>
+<h4 id="2000-read-all-books">2000-READ-ALL-BOOKS<a class="headerlink" href="#2000-read-all-books" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> Book fields from <code>VSAMBOOK</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Reads all book records from the VSAM file and processes them.</li>
+</ul>
+<h4 id="2100-write-record">2100-WRITE-RECORD<a class="headerlink" href="#2100-write-record" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>WS-PAGE-NO</code>, <code>WS-REC-COUNT</code>, <code>WS-WRITE-REC</code>, <code>88-DONT-WRITE-REC</code>, <code>REP-OP-FIELDS</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Writes a book record to the output file <code>REP-OP</code>.</li>
+</ul>
+<h4 id="3000-housekeeping">3000-HOUSEKEEPING<a class="headerlink" href="#3000-housekeeping" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>REP-OP-FIELDS</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Performs housekeeping tasks such as writing the footer and closing the output file.</li>
+</ul>
+<h4 id="9998-file-err-chk">9998-FILE-ERR-CHK<a class="headerlink" href="#9998-file-err-chk" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>ERR-LOC</code>, <code>ERR-MSG</code>, <code>ERR-PGM</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Checks for file errors and logs messages.</li>
+</ul>
+<h4 id="9999-vsam-err-chk">9999-VSAM-ERR-CHK<a class="headerlink" href="#9999-vsam-err-chk" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Inputs:</strong> <code>ERR-LOC</code>, <code>ERR-MSG</code>, <code>ERR-PGM</code>, <code>VSAM-REASON-CODE</code>, <code>VSAM-RETURN-CODE</code>, <code>VSAM-COMPONENT-CODE</code></li>
+<li><strong>Outputs:</strong> None</li>
+<li><strong>Description:</strong> Checks for VSAM errors and logs messages.</li>
+</ul>
+<h2 id="4-program-logic">4. Program Logic<a class="headerlink" href="#4-program-logic" title="Permanent link">&para;</a></h2>
+<h3 id="pseudocode-representation">Pseudocode Representation<a class="headerlink" href="#pseudocode-representation" title="Permanent link">&para;</a></h3>
+<pre><code class="language-pseudocode">BEGIN PROGRAM CFBOOKSV
+
+    PERFORM 1000-INITIALIZE THRU 1000-EXIT
+    MOVE 1 TO WS-PAGE-NO
+    PERFORM 1100-WRITE-HEADER THRU 1100-EXIT
+    MOVE SPACES TO EOF-FLAG
+    OPEN INPUT VSAMBOOK
+    MOVE 'ERROR OPENING VSAMBOOK' TO ERR-MSG
+    PERFORM 9999-VSAM-ERR-CHK THRU 9999-EXIT
+    MOVE 0 TO BOOKS-BOOK-ID
+    START VSAMBOOK KEY &gt;= BOOKS-BOOK-ID
+    MOVE 'ERROR POSITIONING VSAMBOOK' TO ERR-MSG
+    PERFORM 9999-VSAM-ERR-CHK THRU 9999-EXIT
+    PERFORM 1200-READ-BOOK THRU 1200-EXIT
+    PERFORM 2000-READ-ALL-BOOKS THRU 2000-EXIT UNTIL END-OF-FILE
+    CLOSE VSAMBOOK
+    MOVE 'ERROR CLOSING VSAMBOOK' TO ERR-MSG
+    PERFORM 9999-VSAM-ERR-CHK THRU 9999-EXIT
+    PERFORM 3000-HOUSEKEEPING THRU 3000-EXIT
+    STOP RUN
+
+END PROGRAM CFBOOKSV
+</code></pre>
+<h3 id="detailed-steps">Detailed Steps<a class="headerlink" href="#detailed-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Initialization:</strong></li>
+<li>Perform initialization by calling <code>1000-INITIALIZE</code>.</li>
+<li>Set the page number to 1.</li>
+<li>Write the header to the output file by calling <code>1100-WRITE-HEADER</code>.</li>
+<li>Set the EOF flag to spaces.</li>
+<li>Open the VSAM file <code>VSAMBOOK</code> for input.</li>
+<li>
+<p>Handle any errors during file opening by calling <code>9999-VSAM-ERR-CHK</code>.</p>
+</li>
+<li>
+<p><strong>Reading and Processing Records:</strong></p>
+</li>
+<li>Set the book ID to 0.</li>
+<li>Start reading the VSAM file from the beginning.</li>
+<li>Handle any errors during file positioning by calling <code>9999-VSAM-ERR-CHK</code>.</li>
+<li>Read the first book record by calling <code>1200-READ-BOOK</code>.</li>
+<li>
+<p>Loop through all book records by calling <code>2000-READ-ALL-BOOKS</code> until the end of the file is reached.</p>
+</li>
+<li>
+<p><strong>Closing Files and Housekeeping:</strong></p>
+</li>
+<li>Close the VSAM file <code>VSAMBOOK</code>.</li>
+<li>Handle any errors during file closing by calling <code>9999-VSAM-ERR-CHK</code>.</li>
+<li>Perform housekeeping tasks by calling <code>3000-HOUSEKEEPING</code>.</li>
+<li>Terminate the program.</li>
+</ol>
+<p>This documentation provides a comprehensive guide to understanding and re-implementing the functionality of the COBOL program <code>CFBOOKSV</code> in a modern programming language.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

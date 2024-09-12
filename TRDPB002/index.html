@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>TRDPB002 COBOL Program Documentation - Index</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Index</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#trdpb002-cobol-program-documentation" class="nav-link">TRDPB002 COBOL Program Documentation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#1-high-level-overview" class="nav-link">1. High-Level Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-data-structures" class="nav-link">2. Data Structures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-functional-decomposition" class="nav-link">3. Functional Decomposition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="trdpb002-cobol-program-documentation">TRDPB002 COBOL Program Documentation<a class="headerlink" href="#trdpb002-cobol-program-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="1-high-level-overview">1. High-Level Overview<a class="headerlink" href="#1-high-level-overview" title="Permanent link">&para;</a></h2>
+<p>The <code>TRDPB002</code> COBOL program is designed to handle security bookings. It performs the following main functions:
+- Debits the seller's security account.
+- Credits the buyer's security account.</p>
+<h3 id="key-inputs">Key Inputs<a class="headerlink" href="#key-inputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Security order details such as order quantity, currency, and account numbers.</li>
+<li>SQL database interactions to fetch and update security account balances.</li>
+</ul>
+<h3 id="key-outputs">Key Outputs<a class="headerlink" href="#key-outputs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updated security account balances.</li>
+<li>Exception reports in case of errors.</li>
+</ul>
+<h2 id="2-data-structures">2. Data Structures<a class="headerlink" href="#2-data-structures" title="Permanent link">&para;</a></h2>
+<h3 id="input-data-formats">Input Data Formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security Order Details</td>
+<td>Input File/DB</td>
+<td>TRD-ORDER-QTY (PIC 9(5)), TRD-CURRENCY (PIC X(3)), TRD-FIGI (PIC X(12)), TRD-BUYER-SEC-ACC-NUM (PIC X(10)), TRD-SELLER-SEC-ACC-NUM (PIC X(10))</td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-data-formats">Output Data Formats<a class="headerlink" href="#output-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Destination</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security Account Balance</td>
+<td>Output File/DB</td>
+<td>POS-BALANCE (PIC 9(10)V99), POS-CURRENCY (PIC X(3)), POS-SAC-NUMBER (PIC X(10)), POS-FIGI (PIC X(12))</td>
+</tr>
+<tr>
+<td>Exception Report</td>
+<td>Output File/DB</td>
+<td>EXCEPTION-TYPE (PIC X(10)), EXCEPTION-RECORD-LEN (PIC 9(4)), EXCEPTION-DESC (PIC X(100))</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-functional-decomposition">3. Functional Decomposition<a class="headerlink" href="#3-functional-decomposition" title="Permanent link">&para;</a></h2>
+<h3 id="0000-mainline">0000-MAINLINE<a class="headerlink" href="#0000-mainline" title="Permanent link">&para;</a></h3>
+<h4 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h4>
+<p>Main entry point of the program. It initializes the process by setting initial flags and calling the booking procedure.</p>
+<h4 id="inputs">Inputs<a class="headerlink" href="#inputs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>None</li>
+</ul>
+<h4 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h4>
+<ul>
+<li>TRD-STATUS</li>
+<li>CREDIT-BUYER</li>
+<li>DEBIT-SELLER</li>
+<li>WS-CR-DB-SWTICH</li>
+<li>TRD-SAC-BOOKING-DONE</li>
+<li>TRD-SAC-BOOKING-FAILED</li>
+</ul>
+<h4 id="logic">Logic<a class="headerlink" href="#logic" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Set <code>TRD-SAC-BOOKING-FAILED</code> to TRUE.</li>
+<li>Set <code>DEBIT-SELLER</code> to TRUE.</li>
+<li>Perform <code>1000-SAC-BOOKING</code>.</li>
+<li>If <code>TRD-SAC-BOOKING-DONE</code> is TRUE:</li>
+<li>Set <code>TRD-SAC-BOOKING-FAILED</code> to TRUE.</li>
+<li>Set <code>CREDIT-BUYER</code> to TRUE.</li>
+<li>Perform <code>1000-SAC-BOOKING</code>.</li>
+<li>Return control to the caller.</li>
+</ol>
+<h3 id="1000-sac-booking">1000-SAC-BOOKING<a class="headerlink" href="#1000-sac-booking" title="Permanent link">&para;</a></h3>
+<h4 id="description_1">Description<a class="headerlink" href="#description_1" title="Permanent link">&para;</a></h4>
+<p>Handles the actual booking process by debiting the seller's account and crediting the buyer's account.</p>
+<h4 id="inputs_1">Inputs<a class="headerlink" href="#inputs_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>TRD-ORDER-QTY</li>
+<li>SQLCODE</li>
+<li>DEBIT-SELLER</li>
+<li>WS-CR-DB-SWTICH</li>
+<li>TRD-FIGI</li>
+<li>TRD-BUYER-SEC-ACC-NUM</li>
+<li>TRD-SELLER-SEC-ACC-NUM</li>
+<li>SQL-INIT-DONE</li>
+<li>POS-BALANCE</li>
+<li>TRD-CURRENCY</li>
+<li>SQL-INIT-FLAG</li>
+</ul>
+<h4 id="outputs_1">Outputs<a class="headerlink" href="#outputs_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>RETURN-CODE</li>
+<li>SQLCODE</li>
+<li>TRD-STATUS</li>
+<li>WS-SQLCODE</li>
+<li>DATA-EXCEPTION</li>
+<li>TRD-CURRENCY</li>
+<li>WS-EXCP-TYPE</li>
+<li>TRD-FIGI</li>
+<li>TRD-BUYER-SEC-ACC-NUM</li>
+<li>TRD-SELLER-SEC-ACC-NUM</li>
+<li>POS-BALANCE</li>
+<li>POS-CURRENCY</li>
+<li>POS-SAC-NUMBER</li>
+<li>TRD-SAC-BOOKING-DONE</li>
+<li>POS-FIGI</li>
+<li>TRD-SAC-BOOKING-FAILED</li>
+<li>WS-EXCEPTION</li>
+</ul>
+<h4 id="logic_1">Logic<a class="headerlink" href="#logic_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>If <code>DEBIT-SELLER</code> is TRUE:</li>
+<li>Move <code>TRD-CURRENCY</code> to <code>POS-CURRENCY</code>.</li>
+<li>Move <code>TRD-SELLER-SEC-ACC-NUM</code> to <code>POS-SAC-NUMBER</code>.</li>
+<li>Move <code>TRD-FIGI</code> to <code>POS-FIGI</code>.</li>
+<li>Display relevant details.</li>
+<li>Else:</li>
+<li>Move <code>TRD-CURRENCY</code> to <code>POS-CURRENCY</code>.</li>
+<li>Move <code>TRD-BUYER-SEC-ACC-NUM</code> to <code>POS-SAC-NUMBER</code>.</li>
+<li>Move <code>TRD-FIGI</code> to <code>POS-FIGI</code>.</li>
+<li>Display relevant details.</li>
+<li>Execute SQL SELECT statement to fetch <code>POS_BALANCE</code>.</li>
+<li>If <code>SQLCODE</code> is not 0:</li>
+<li>Set <code>TRD-SAC-BOOKING-FAILED</code> to TRUE.</li>
+<li>Move <code>SQLCODE</code> to <code>WS-SQLCODE</code>.</li>
+<li>Set <code>DATA-EXCEPTION</code> to TRUE.</li>
+<li>Move SPACES to <code>WS-EXCEPTION</code>.</li>
+<li>Concatenate error message and store in <code>WS-EXCEPTION</code>.</li>
+<li>Perform <code>9000-REPORT-EXCEPTION</code>.</li>
+<li>Go to <code>1000-EXIT</code>.</li>
+<li>Fetch <code>POS_BOOKING</code> into <code>POS-BALANCE</code>.</li>
+<li>If <code>SQLCODE</code> is 0:</li>
+<li>If <code>DEBIT-SELLER</code> is TRUE:<ul>
+<li>Compute <code>POS-BALANCE</code> by subtracting <code>TRD-ORDER-QTY</code>.</li>
+</ul>
+</li>
+<li>Else:<ul>
+<li>Compute <code>POS-BALANCE</code> by adding <code>TRD-ORDER-QTY</code>.</li>
+</ul>
+</li>
+<li>Update <code>TBTRDPOS</code> with new <code>POS-BALANCE</code>.</li>
+<li>If <code>SQLCODE</code> is 0:<ul>
+<li>Set <code>TRD-SAC-BOOKING-DONE</code> to TRUE.</li>
+</ul>
+</li>
+<li>Else:<ul>
+<li>Set <code>TRD-SAC-BOOKING-FAILED</code> to TRUE.</li>
+<li>Move <code>SQLCODE</code> to <code>WS-SQLCODE</code>.</li>
+<li>Set <code>DATA-EXCEPTION</code> to TRUE.</li>
+<li>Move SPACES to <code>WS-EXCEPTION</code></li>
+</ul>
+</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

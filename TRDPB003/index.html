@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>TRDPB003 Documentation - Index</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Index</a>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#trdpb003-documentation" class="nav-link">TRDPB003 Documentation</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#high-level-overview" class="nav-link">High-Level Overview</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#data-structures" class="nav-link">Data Structures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#functional-decomposition" class="nav-link">Functional Decomposition</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#program-logic" class="nav-link">Program Logic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="trdpb003-documentation">TRDPB003 Documentation<a class="headerlink" href="#trdpb003-documentation" title="Permanent link">&para;</a></h1>
+<h2 id="high-level-overview">High-Level Overview<a class="headerlink" href="#high-level-overview" title="Permanent link">&para;</a></h2>
+<p>The <code>TRDPB003</code> COBOL program is designed to handle money booking transactions. The main functionalities include:
+- Debiting the seller's money account.
+- Crediting the buyer's money account.</p>
+<h2 id="data-structures">Data Structures<a class="headerlink" href="#data-structures" title="Permanent link">&para;</a></h2>
+<h3 id="input-data-formats">Input Data Formats<a class="headerlink" href="#input-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Source</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction Record</td>
+<td>Input File</td>
+<td><code>TRD-BUYER-MONEY-ACC-NUM</code>, <code>TRD-SELLER-MONEY-ACC-NUM</code>, <code>TRD-CURRENCY</code>, <code>TRD-ORDER-AMOUNT</code></td>
+</tr>
+<tr>
+<td>SQL Initialization</td>
+<td>Database</td>
+<td><code>SQL-INIT-DONE</code>, <code>SQLCODE</code>, <code>SQL-INIT-FLAG</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="output-data-formats">Output Data Formats<a class="headerlink" href="#output-data-formats" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Destination</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exception Report</td>
+<td>Output File</td>
+<td><code>WS-EXCEPTION</code>, <code>EXCEPTION-DESC</code>, <code>EXCEPTION-RECORD-LEN</code>, <code>EXCEPTION-TYPE</code></td>
+</tr>
+<tr>
+<td>Account Balance Update</td>
+<td>Database</td>
+<td><code>MAC-BALANCE</code>, <code>MAC-CURRENCY</code>, <code>MAC-NUMBER</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="functional-decomposition">Functional Decomposition<a class="headerlink" href="#functional-decomposition" title="Permanent link">&para;</a></h2>
+<h3 id="main-functions">Main Functions<a class="headerlink" href="#main-functions" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>0000-MAINLINE</strong></li>
+<li><strong>Inputs:</strong> None</li>
+<li><strong>Outputs:</strong> <code>TRD-MAC-BOOKING-FAILED</code>, <code>DEBIT-BUYER</code>, <code>TRD-MAC-BOOKING-DONE</code>, <code>TRD-STATUS</code></li>
+<li>
+<p><strong>Description:</strong> </p>
+<ul>
+<li>Sets initial flags for booking failure and debit buyer.</li>
+<li>Calls the <code>1000-MAC-BOOKING</code> paragraph.</li>
+<li>If booking is done, sets the credit seller flag and calls <code>1000-MAC-BOOKING</code> again.</li>
+<li>Ends with a <code>GOBACK</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>1000-MAC-BOOKING</strong></p>
+</li>
+<li><strong>Inputs:</strong> <code>CREDIT-SELLER</code>, <code>TRD-BUYER-MONEY-ACC-NUM</code>, <code>TRD-SELLER-MONEY-ACC-NUM</code>, <code>TRD-CURRENCY</code>, <code>TRD-ORDER-AMOUNT</code>, <code>SQLCODE</code></li>
+<li><strong>Outputs:</strong> <code>WS-EXCEPTION</code>, <code>WS-SQLCODE</code>, <code>TRD-MAC-BOOKING-DONE</code>, <code>TRD-STATUS</code>, <code>MAC-BALANCE</code>, <code>MAC-CURRENCY</code>, <code>MAC-NUMBER</code></li>
+<li>
+<p><strong>Description:</strong> </p>
+<ul>
+<li>Determines whether to credit seller or debit buyer.</li>
+<li>Executes SQL statements to fetch and update account balances.</li>
+<li>Handles SQL exceptions and reports them.</li>
+</ul>
+</li>
+<li>
+<p><strong>9000-REPORT-EXCEPTION</strong></p>
+</li>
+<li><strong>Inputs:</strong> <code>WS-EXCEPTION</code>, <code>APPL-EXCEPTION</code>, <code>DATA-EXCEPTION</code>, <code>SYSTEM-EXCEPTION</code>, <code>WS-EXCP-TYPE</code></li>
+<li><strong>Outputs:</strong> <code>EXCEPTION-DESC</code>, <code>EXCEPTION-RECORD-LEN</code>, <code>EXCEPTION-TYPE</code></li>
+<li><strong>Description:</strong> <ul>
+<li>Moves exception details to the exception report.</li>
+<li>Calls the exception handler program.</li>
+</ul>
+</li>
+</ol>
+<h2 id="program-logic">Program Logic<a class="headerlink" href="#program-logic" title="Permanent link">&para;</a></h2>
+<p>The program logic is broken down into the following steps:</p>
+<ol>
+<li>
+<p><strong>0000-MAINLINE</strong>
+   <code>SET TRD-MAC-BOOKING-FAILED TO TRUE
+   SET DEBIT-BUYER TO TRUE
+   PERFORM 1000-MAC-BOOKING THRU 1000-EXIT
+   IF TRD-MAC-BOOKING-DONE THEN
+       SET TRD-MAC-BOOKING-FAILED TO TRUE
+       SET CREDIT-SELLER TO TRUE
+       PERFORM 1000-MAC-BOOKING THRU 1000-EXIT
+   END-IF
+   GOBACK</code></p>
+</li>
+<li>
+<p><strong>1000-MAC-BOOKING</strong>
+   ```
+   IF CREDIT-SELLER
+       MOVE TRD-CURRENCY TO MAC-CURRENCY
+       MOVE TRD-SELLER-MONEY-ACC-NUM TO MAC-NUMBER
+   ELSE
+       MOVE TRD-CURRENCY TO MAC-CURRENCY
+       MOVE TRD-BUYER-MONEY-ACC-NUM TO MAC-NUMBER
+   END-IF</p>
+</li>
+</ol>
+<p>SELECT MAC_BALANCE FROM TBTRDMAC WHERE MAC_CURRENCY = :MAC-CURRENCY AND MAC_NUMBER = :MAC-NUMBER FOR UPDATE OF MAC_BALANCE</p>
+<p>IF SQLCODE NOT = 0
+       SET TRD-MAC-BOOKING-FAILED TO TRUE
+       MOVE SQLCODE TO WS-SQLCODE
+       SET DATA-EXCEPTION TO TRUE
+       MOVE SPACES TO WS-EXCEPTION
+       STRING 'Open MAC_BOOKING Cursor failed : SQLCODE = ' WS-SQLCODE DELIMITED BY SIZE INTO WS-EXCEPTION
+       PERFORM 9000-REPORT-EXCEPTION THRU 9000-EXIT
+       GO TO 1000-EXIT
+   END-IF</p>
+<p>FETCH MAC_BOOKING INTO :MAC-BALANCE</p>
+<p>IF SQLCODE = 0
+       IF CREDIT-SELLER
+           COMPUTE MAC-BALANCE = MAC-BALANCE + TRD-ORDER-AMOUNT
+       ELSE
+           COMPUTE MAC-BALANCE = MAC-BALANCE - TRD-ORDER-AMOUNT
+       END-IF</p>
+<pre><code>   UPDATE TBTRDMAC SET MAC_BALANCE = :MAC-BALANCE WHERE MAC_CURRENCY = :MAC-CURRENCY AND MAC_NUMBER = :MAC-NUMBER
+
+   IF SQLCODE = 0
+       SET TRD-MAC-BOOKING-DONE TO TRUE
+   ELSE
+       SET TRD-MAC-BOOKING-FAILED TO TRUE
+       MOVE SQLCODE TO WS-SQLCODE
+       SET DATA-EXCEPTION TO TRUE
+       MOVE SPACES TO WS-EXCEPTION
+       STRING 'Update using MAC_BOOKING Cursor failed : SQLCODE = ' WS-SQLCODE DELIMITED BY SIZE INTO WS-EXCEPTION
+       PERFORM 9000-REPORT-EXCEPTION THRU 9000-EXIT
+   END-IF
+</code></pre>
+<p>ELSE
+       SET TRD-MAC-BOOKING-FAILED TO TRUE
+       MOVE SQLCODE TO WS-SQLCODE
+       SET DATA-EXCEPTION TO TRUE
+       MOVE SPACES TO WS-EXCEPTION
+       STRING 'Fetch MAC_BOOKING Cursor failed : SQLCODE = ' WS-SQLCODE DELIMITED BY SIZE INTO WS-EXCEPTION
+       PERFORM 9000-REPORT-EXCEPTION THRU 9000-EXIT
+   END-IF</p>
+<p>CLOSE MAC_BOOKING
+   ```</p>
+<ol>
+<li><strong>9000-REPORT-EXCEPTION</strong>
+   <code>MOVE WS-EXCEPTION TO EXCEPTION-DESC
+   MOVE LENGTH OF WS-EXCEPTION TO EXCEPTION-RECORD-LEN
+   EVALUATE TRUE
+       WHEN SYSTEM-EXCEPTION
+           MOVE 'SYSTEM' TO EXCEPTION-TYPE
+       WHEN APPL-EXCEPTION
+           MOVE 'APPLICATION' TO EXCEPTION-TYPE
+       WHEN DATA-EXCEPTION
+           MOVE 'DATA' TO EXCEPTION-TYPE
+   END-EVALUATE
+   ADD 46 TO EXCEPTION-RECORD-LEN
+   CALL WS-EXCEPTION-HANDLER USING EXCEPTION-RECORD-LEN, EXCEPTION-RECORD</code></li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
